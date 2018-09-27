@@ -1,0 +1,20 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+version = project.compareListVersion
+
+jar {
+    manifest {
+        attributes(
+                'Manifest-Version': project.compareListVersion,
+                'Main-Class': 'net.maxsmr.comparelist.CompareListUtil',
+                'DEBUG': false
+        )
+    }
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
