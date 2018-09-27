@@ -73,14 +73,11 @@ public class CompareListUtil {
             logger.e("Unknown argument \"" + args[index] + "\" (position: " + index + ")");
         }
 
-        List<String> sourceLines = FileHelper.readStringsFromFile(sourceListFile);
-        List<String> destinationLines = FileHelper.readStringsFromFile(destinationListFile);
+        final List<String> sourceLines = FileHelper.readStringsFromFile(sourceListFile);
+        final List<String> destinationLines = FileHelper.readStringsFromFile(destinationListFile);
 
-        final Map<Integer, String> result = Predicate.Methods.filterWithIndex(sourceLines, element
-                -> {
-            final String target = element;
-            return !Predicate.Methods.contains(destinationLines, element1 -> element1.equals(target));
-        });
+        final Map<Integer, String> result = Predicate.Methods.filterWithIndex(sourceLines, source
+                -> !Predicate.Methods.contains(destinationLines, destination -> destination.equals(source)));
 
         if (result.isEmpty()) {
             logger.i("No difference found");
