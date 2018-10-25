@@ -3,6 +3,9 @@ package net.maxsmr.comparelist.utils;
 import net.maxsmr.comparelist.utils.logger.BaseLogger;
 import net.maxsmr.comparelist.utils.logger.holder.BaseLoggerHolder;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -93,10 +96,12 @@ public final class StreamUtils {
         return result;
     }
 
+    @Nullable
     public static byte[] readBytesFromInputStream(InputStream inputStream) {
         return readBytesFromInputStream(inputStream, true);
     }
 
+    @Nullable
     public static byte[] readBytesFromInputStream(InputStream inputStream, boolean closeInput) {
 
         if (inputStream != null) {
@@ -128,20 +133,23 @@ public final class StreamUtils {
         return null;
     }
 
-
+    @Nullable
     public static String readStringFromInputStream(InputStream is, boolean closeInput) {
         return readStringFromInputStream(is, 0, closeInput);
     }
 
+    @Nullable
     public static String readStringFromInputStream(InputStream is, int count, boolean closeInput) {
         Collection<String> strings = readStringsFromInputStream(is, count, closeInput);
         return !strings.isEmpty() ? TextUtils.join(System.getProperty("line.separator"), strings) : null;
     }
 
+    @NotNull
     public static List<String> readStringsFromInputStream(InputStream is, boolean closeInput) {
         return readStringsFromInputStream(is, 0, closeInput);
     }
 
+    @NotNull
     public static List<String> readStringsFromInputStream(InputStream is, int count, boolean closeInput) {
         if (is != null) {
             BufferedReader in = null;
@@ -170,7 +178,7 @@ public final class StreamUtils {
         return Collections.emptyList();
     }
 
-
+    @Nullable
     public static String convertInputStreamToString(InputStream inputStream) {
         ByteArrayOutputStream result = new ByteArrayOutputStream();
         revectorStream(inputStream, result);

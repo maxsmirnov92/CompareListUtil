@@ -1,5 +1,6 @@
 package net.maxsmr.comparelist.utils;
 
+import net.maxsmr.comparelist.utils.support.Pair;
 
 import java.util.ArrayList;
 import java.util.Collection;

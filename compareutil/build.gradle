@@ -2,6 +2,9 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Jetbrains annotations
+    implementation "org.jetbrains:annotations:$jetbrainsAnnotationsVersion"
 }
 
 version = project.compareListVersion
@@ -16,5 +19,5 @@ jar {
     }
 }
 
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
+sourceCompatibility = sourceCompatibilityVersion
+targetCompatibility = sourceCompatibilityVersion

@@ -25,3 +25,9 @@ allprojects {
         jcenter()
     }
 }
+
+ext {
+    sourceCompatibilityVersion = 1.8
+
+    jetbrainsAnnotationsVersion = '13.0'
+}

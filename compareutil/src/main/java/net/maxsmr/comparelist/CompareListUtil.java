@@ -3,6 +3,7 @@ package net.maxsmr.comparelist;
 import net.maxsmr.comparelist.utils.ArgsParser;
 import net.maxsmr.comparelist.utils.FileHelper;
 import net.maxsmr.comparelist.utils.Predicate;
+import net.maxsmr.comparelist.utils.TextUtils;
 import net.maxsmr.comparelist.utils.logger.BaseLogger;
 import net.maxsmr.comparelist.utils.logger.SimpleSystemLogger;
 import net.maxsmr.comparelist.utils.logger.holder.BaseLoggerHolder;
@@ -17,7 +18,7 @@ public class CompareListUtil {
     private static final BaseLogger logger;
 
     static {
-        System.setErr(System.out);
+        System.setErr(System.out); // to avoid asynchronous outputs
         BaseLoggerHolder.initInstance(() -> new BaseLoggerHolder(false) {
             @Override
             protected BaseLogger createLogger(Class<?> clazz) {
@@ -77,7 +78,7 @@ public class CompareListUtil {
         final List<String> destinationLines = FileHelper.readStringsFromFile(destinationListFile);
 
         final Map<Integer, String> result = Predicate.Methods.filterWithIndex(sourceLines, source
-                -> !Predicate.Methods.contains(destinationLines, destination -> destination.equals(source)));
+                -> !TextUtils.isEmpty(source) && !Predicate.Methods.contains(destinationLines, destination -> destination.equals(source)));
 
         if (result.isEmpty()) {
             logger.i("No difference found");

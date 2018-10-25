@@ -1,4 +1,4 @@
-package net.maxsmr.comparelist.utils;
+package net.maxsmr.comparelist.utils.support;
 
 public class Pair<F, S> {
 

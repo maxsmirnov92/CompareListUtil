@@ -1,5 +1,7 @@
 package net.maxsmr.comparelist.utils;
 
+import net.maxsmr.comparelist.utils.support.Pair;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -7,7 +9,7 @@ import java.util.Enumeration;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 
-public class JvmUtils {
+public final class JvmUtils {
 
     public static Pair<String, String> getJvmVersion() {
         String classPath = String.class.getResource(String.class.getSimpleName() + ".class").toString();
